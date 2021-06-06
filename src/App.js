@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
+import { UIProvider, CartProvider, CustomerProvider, ProductsProvider } from 'contexts/index';
+import { Header, CartPanel, GetProducts, SectionTitle, HomeHero, Footer} from 'components/index';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+   return (
+     <Fragment>
+       <div style={{ height: 185 }}></div>
+       <UIProvider>
+         <CartProvider>
+           <CustomerProvider>
+             <ProductsProvider>
+               <Header/>
+               <CartPanel/>
+               <HomeHero/>
+               <GetProducts type="featuredProducts"/>
+               <SectionTitle section="seatingAndGenerators"/>
+               <GetProducts type="otherProducts"/>
+               <Footer/>
+           </ProductsProvider>
+         </CustomerProvider>
+       </CartProvider>
+     </UIProvider>
+   </Fragment>
+   )
 }
 
 export default App;

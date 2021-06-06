@@ -1,38 +1,203 @@
-.App {
+.root {
+  background: #e3e3e3;
+  background-image: linear-gradient(0.25turn, #ffbf00, #ff6a00);
+  font-family: 'Open Sans', sans-serif;
+  max-width: 100vw;
+  position: relative;
+}
+.noScroll {
+  overflow: hidden;
+}
+h1, h2, h3, .card-title, .card-header, .navbar-brand {
+  font-family: 'Grandstander', cursive;
+}
+#paymentBlock {
+  position: fixed;
+  min-width: 300px;
+  height: auto;
+  background: pink;
+  padding: 30px;
+  top: 200px;
+  left: 28vw;
+  right: 28vw;
+  margin: auto;
+  z-index: 3000;
+}
+:disabled {
+  color: #88888;
+  background-color: #66666;
+  background-image: linear-gradient(0.25turn, #33333, #66666);
+}
+.closeX {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 9px;
+  right: 60px;
+}
+.navbar {
+  background-image: linear-gradient(0.25turn, #35004b, #882ab0);
+  box-shadow: 0 0 10px #000;
+  max-width: 100vw;
+  border: none;
+}
+.navbar-brand {
+  font-size: 36px;
+  font-weight: 500;
+  padding: 5px 0 0 5px;
+  color: #ffffff !important;
+}
+.setDateSlider {
+  position: fixed;
+  padding: 20px;
+  background-image: linear-gradient(0.25turn, #2b2b2b, #3c3c3c);
+  box-shadow: 0 0 30px #000;
+  z-index: 1027;
+  width: 100vw;
+  left: 0;
+  right: 0;
+  top: -5px;
   text-align: center;
+  transition: 0.3s;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.openSetDate {
+  position: absolute;
+  bottom: -50px;
+  text-align: center;
+  width: 300px;
+  margin: auto;
+  background: transparent;
+  left: 0;
+  right: 0;
+  transition: 0.3s;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.setDateSlider.open {
+  top: 75px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.lottie {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: -2px;
+    right: 10px;
 }
-
-.App-link {
-  color: #61dafb;
+.setDateSlider.open > .openSetDate {
+  width: 300px;
+  margin: auto;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.openSetDate > Button {
+  position: absolute;
+  top: -50px;
+  border-radius: 0 0 4px 4px;
+  width: 300px;
+  padding: 8px 0 8px 60px;
+  font-size: 16px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  text-align: left;
+}
+.open .openSetDate > Button {
+  border-radius: 0 0 4px 4px;
+  width: 300px;
+  padding: 0 0 0 80px;
+  font-size: 16px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+}
+.lottie {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 0;
+  top: 40px;
+}
+.cart {
+  right: -100vw;
+  width: 0;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  z-index: 1029;
+  top: 75px;
+  transition: 0.5s;
+  opacity: 0;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.cart.open {
+  right: 0;
+  opacity: 1;
+  width: 100vw;
+}
+.cartInner {
+  background: #ffffff;
+  height: 100%;
+  width: 70%;
+  float: right;
+  padding-top: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  overflow: scroll;
+}
+.homeHero {
+  background-image: url('./backgrounds/kidsBouncing.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-radius: 8px;
+  min-height: 400px;
+}
+.sectionTitle.card-header {
+  background:  linear-gradient(0.25turn, #35004b, #882ab0);
+  padding: 15px 20px 6px;
+  border-radius: 0;
+}
+.sectionTitle h1, h3 {
+  color: #fff;
+  margin: 0;
+}
+.sectionTitle h3 {
+  font-size: 22px;
+}
+.card  {
+  margin-bottom: 30px;
+}
+.card {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+  border: 0;
+  border-radius: 0;
+}
+.cardImage {
+  height: 220px;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+.form-label {
+  color: #888888;
+}
+.shopContainer {
+  position: fixed;
+  padding: 20px;
+  right: 0;
+  top: 80px;
+  background: #ffffff;
+  height: 100%;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  display: none;
+}
+.bagCount {
+  display: block;
+  position: absolute;
+  right: 8px;
+  top: 0;
+  padding: 0 8px;
+  background: red;
+  color: #ffffff;
+  border-radius: 30px;
+  font-size: 16px
+}
+.footerContainer {
+  background-image: linear-gradient(0.25turn, #2b2b2b, #3c3c3c);
+  padding: 30px;
+  marginTop: 30px;
 }
