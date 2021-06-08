@@ -11,7 +11,7 @@ const UIProvider = ({ children }) => {
   const toggleSlider = (el) => { setSliderState( !sliderState )}
 
   // change state of cart slide in element
-  const [ cartState, setCartState ] = useState(false)
+  const [ cartState, setCartState ] = useState(true)
   const toggleCart = (el) => {
     setCartState( !cartState )
   }

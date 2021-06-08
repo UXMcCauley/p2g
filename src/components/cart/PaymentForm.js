@@ -1,37 +1,24 @@
 import React from 'react';
-import { ApiError, Client, Environment } from 'square'
-import { Button } from 'react-bootstrap';
-import { v4 as uuidv4 } from 'uuid';
+import { Client, Environment } from 'square'
 
 const PaymentForm = () => {
-  const client = new Client({
-    timeout: 3000,
-    environment: Environment.Sandbox,
-    accessToken: 'EAAAEPDHWPUpzr2tpsfjHW0TGAlm_FiADoNqbLgOB8OwcC6GAcy9nlrVwXiYxacG',
-  })
-
-  const takePayment = () => {
+  const tryItNow = async () => {
+    const client = new Client({
+      environment: Environment.Sandbox,
+      accessToken: process.env.REACT_APP_SQUARE_ACCESS_TOKEN,
+    })
+    // const paymentsApi = client.paymentsApi;
+    const bodyAmountMoney: Money = {};
+    bodyAmountMoney.amount = 200;
+    bodyAmountMoney.currency = 'USD';
     try {
-      const response = client.paymentsApi.createPayment({
+      const response = await client.paymentsApi.createPayment({
         sourceId: 'cnon:card-nonce-ok',
-        idempotencyKey: uuidv4(),
+        idempotencyKey: 'feed35df-7f7b-4466-b002-3a1fb1e40fc5',
         amountMoney: {
           amount: 50,
           currency: 'USD'
-        },
-        autocomplete: true,
-        acceptPartialAuthorization: false,
-        buyerEmailAddress: 'uxmccauley@gmail.com',
-        billingAddress: {
-          addressLine1: '8472 County Road T',
-          locality: 'Arpin',
-          postalCode: '54410',
-          country: 'US',
-          firstName: 'Drew',
-          lastName: 'McCauley'
-        },
-        note: 'Parties 2 Go rental deposit',
-        statementDescriptionIdentifier: 'Parties 2 Go'
+        }
       });
 
       console.log(response.result);
@@ -41,9 +28,14 @@ const PaymentForm = () => {
   }
 
   return (
-    <Button onClick={ ()=> {takePayment()} }>Try Payment</Button>
+    <div>
+      <form id="payment-form">
+        <div id="card-container"></div>
+        <button onClick={() => {tryItNow()}} id="card-button" type="button">Pay $1.00</button>
+      </form>
+      <div id="payment-status-container"></div>
+    </div>
   )
-
 }
 
 export default PaymentForm;
